@@ -1,0 +1,15 @@
+export const contact = {
+  eyebrow: "04 — Contact",
+  heading: "Travaillons ensemble",
+  namePlaceholder: "Ton nom",
+  emailPlaceholder: "Ton email",
+  messagePlaceholder: "Ton message",
+  submit: "Envoyer",
+  submitting: "Envoi…",
+  success: "Merci pour ton message — je reviens vite vers toi ✨",
+  error: "L'envoi a échoué. Réessaie dans un instant.",
+  fieldError: "Ce champ est requis.",
+  emailInvalid: "Entre un email valide.",
+  displayEmail: "contact@emma.fr",
+  mailto: "mailto:contact@emma.fr",
+};
