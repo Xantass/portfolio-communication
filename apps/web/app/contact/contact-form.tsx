@@ -56,7 +56,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-6" noValidate>
+    <form onSubmit={handleSubmit} className="flex max-w-[560px] flex-col gap-5" noValidate>
       <TextField
         as="input"
         id="name"
@@ -91,7 +91,7 @@ export function ContactForm() {
         variant="pill"
         type="submit"
         disabled={submitting}
-        className="bg-accent text-ink hover:bg-blush px-8 py-[14px] text-[15px]"
+        className="mt-3 self-start bg-accent px-8 py-[14px] text-[15px] text-ink hover:bg-blush"
       >
         {submitting ? contact.submitting : contact.submit}
       </Button>
