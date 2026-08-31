@@ -22,6 +22,13 @@ type ButtonProps = {
 
 export function Button({ variant, href, type = "button", disabled, className, children, onClick }: ButtonProps) {
   const cls = cn(variants[variant], "cursor-pointer font-sans transition-colors", disabled && "cursor-not-allowed opacity-50", className);
+  if (href && disabled) {
+    return (
+      <span className={cls} aria-disabled="true">
+        {children}
+      </span>
+    );
+  }
   if (href) {
     return (
       <Link href={href} className={cls} onClick={onClick}>
