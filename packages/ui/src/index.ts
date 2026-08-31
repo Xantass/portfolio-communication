@@ -11,3 +11,7 @@ export { NavBar } from "./nav-bar";
 export { TextField } from "./text-field";
 export { Blob } from "./blob";
 export { Tab } from "./tab";
+export { SkillBand } from "./skill-band";
+export { InterestBand } from "./interest-band";
+export { ProjectTile } from "./project-tile";
+export { ProjectModal } from "./project-modal";
