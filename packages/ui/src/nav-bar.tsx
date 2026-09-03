@@ -108,15 +108,27 @@ export function NavBar({ brand, items }: NavBarProps) {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  const onContact = pathname === "/contact";
+
   return (
     <>
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-[100] flex items-center justify-between px-[5vw] py-[22px] transition-colors",
-          scrolled ? "bg-bg/90 backdrop-blur-[10px]" : "bg-transparent",
+          scrolled
+            ? onContact
+              ? "bg-contact/90 backdrop-blur-[10px]"
+              : "bg-bg/90 backdrop-blur-[10px]"
+            : "bg-transparent",
         )}
       >
-        <Link href="/" className="font-serif text-[26px] font-semibold tracking-[0.5px] text-ink">
+        <Link
+          href="/"
+          className={cn(
+            "font-serif text-[26px] font-semibold tracking-[0.5px] transition-colors",
+            onContact ? "text-bg" : "text-ink",
+          )}
+        >
           {brand}
         </Link>
 
@@ -126,7 +138,15 @@ export function NavBar({ brand, items }: NavBarProps) {
               key={item.href}
               variant={item.variant}
               href={item.href}
-              className={item.variant === "ghost" && pathname === item.href ? "text-accent" : undefined}
+              className={
+                item.variant === "ghost"
+                  ? pathname === item.href
+                    ? "text-accent"
+                    : onContact
+                      ? "text-bg hover:text-accent"
+                      : undefined
+                  : undefined
+              }
             >
               {item.label}
             </Button>
@@ -136,7 +156,10 @@ export function NavBar({ brand, items }: NavBarProps) {
         <button
           ref={hamburgerRef}
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center text-ink md:hidden"
+          className={cn(
+            "inline-flex h-10 w-10 items-center justify-center md:hidden",
+            onContact ? "text-bg" : "text-ink",
+          )}
           aria-label="Menu"
           aria-expanded={open}
           aria-controls={menuId}

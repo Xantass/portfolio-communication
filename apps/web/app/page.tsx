@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <section
       id="accueil"
-      className="relative box-border flex h-dvh items-center justify-center overflow-hidden px-[6vw] pb-5 pt-[70px]"
+      className="relative box-border flex min-h-dvh items-center justify-center overflow-x-hidden px-[6vw] pb-8 pt-[70px]"
     >
       <Blob tone="blush" position="accueil-top" />
       <Blob tone="olive" position="accueil-bottom" />
@@ -24,14 +24,15 @@ export default function HomePage() {
           {home.welcome}
         </Heading>
 
-        <div className="grid grid-cols-1 items-center md:grid-cols-[0.85fr_1.15fr]">
-          <div className="h-[314px] max-h-[28vh] w-[190px] overflow-hidden rounded-[6px]">
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-stretch md:gap-14">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px] overflow-hidden rounded-[6px] md:mx-0 md:aspect-auto md:h-full md:min-h-0 md:w-full md:max-w-none">
             <Media
               src={images.portrait}
               alt={home.portraitLabel}
               fallbackLabel={home.portraitLabel}
-              aspectRatio="4/5"
-              className="h-full w-full"
+              className="h-full w-full md:absolute md:inset-0"
+              objectPosition="center 70%"
+              imageClassName="scale-[1.22] origin-[center_80%]"
             />
           </div>
 
@@ -43,9 +44,13 @@ export default function HomePage() {
             >
               {home.heading}
             </Heading>
-            <Body size="sm" className="mb-2.5">
-              {home.bio}
-            </Body>
+            <div className="mb-3.5 flex flex-col gap-3">
+              {home.bio.map((paragraph) => (
+                <Body key={paragraph} size="sm">
+                  {paragraph}
+                </Body>
+              ))}
+            </div>
             <Button variant="underline" href={home.ctaHref}>
               {home.cta}
             </Button>

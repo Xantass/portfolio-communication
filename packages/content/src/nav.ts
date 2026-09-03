@@ -2,7 +2,7 @@ export type NavHref = "/" | "/competences" | "/realisations" | "/interets" | "/c
 export type NavItem = { href: NavHref; label: string; variant: "ghost" | "pill" };
 
 export const nav = {
-  brand: "Emma",
+  brand: "Alizée",
   items: [
     { href: "/", label: "Accueil", variant: "ghost" },
     { href: "/competences", label: "Mes compétences", variant: "ghost" },

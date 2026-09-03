@@ -6,6 +6,7 @@ export { Heading } from "./heading";
 export { Body } from "./body";
 export { Container } from "./container";
 export { Media } from "./media";
+export { FittedMedia } from "./fitted-media";
 export { IconLink } from "./icon-link";
 export { NavBar } from "./nav-bar";
 export { TextField } from "./text-field";

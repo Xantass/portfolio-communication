@@ -10,6 +10,6 @@ export const contact = {
   error: "L'envoi a échoué. Réessaie dans un instant.",
   fieldError: "Ce champ est requis.",
   emailInvalid: "Entre un email valide.",
-  displayEmail: "contact@emma.fr",
-  mailto: "mailto:contact@emma.fr",
+  displayEmail: "marques.alizee@hotmail.fr",
+  mailto: "mailto:marques.alizee@hotmail.fr",
 };

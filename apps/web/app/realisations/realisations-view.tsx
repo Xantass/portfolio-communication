@@ -27,8 +27,9 @@ export function RealisationsView() {
         title: selected.title,
         category: selected.category,
         description: selected.description,
-        src: images.projects[selected.id],
+        src: selected.src,
         fallbackLabel: `${selected.category} — ${selected.title}`,
+        pdf: selected.pdf,
       }
     : null;
 
@@ -51,6 +52,7 @@ export function RealisationsView() {
             alt="Visuel de mise en avant"
             fallbackLabel="Visuel de mise en avant"
             aspectRatio="4/5"
+            objectPosition="center 72%"
           />
         </div>
       </div>
@@ -70,7 +72,7 @@ export function RealisationsView() {
             <ProjectTile
               key={p.id}
               title={p.title}
-              src={images.projects[p.id]}
+              src={p.src}
               fallbackLabel={`${p.category} — ${p.title}`}
               onClick={() => setSelectedId(p.id)}
             />
