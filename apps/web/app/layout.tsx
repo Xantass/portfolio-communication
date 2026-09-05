@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { nav } from "@portfolio/content";
 import { NavBar } from "@portfolio/ui";
+import type { Metadata } from "next";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -18,8 +18,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Emma — Portfolio",
-  description: "Portfolio d'Emma, communication et création visuelle.",
+  title: "Alizée — Portfolio",
+  description: "Portfolio d'Alizée, communication et création visuelle.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
