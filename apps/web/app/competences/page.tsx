@@ -9,7 +9,7 @@ export default function CompetencesPage() {
         <Heading as="h2">Mes compétences</Heading>
         <Body italic className="max-w-[480px]">
             Mes compétences se sont construites à la croisée de ma formation en communication, de mes expériences en stage et en alternance, et de mes passions personnelles.
-            Ce parcours m'a permis d'allier une approche stratégique et éditoriale à une véritable sensibilité créative, nourrie par mon goût pour l'image et la vidéo.
+            Ce parcours m&apos;a permis d&apos;allier une approche stratégique et éditoriale à une véritable sensibilité créative, nourrie par mon goût pour l&apos;image et la vidéo.
         </Body>
       </Container>
       {skills.map((skill, index) => (
