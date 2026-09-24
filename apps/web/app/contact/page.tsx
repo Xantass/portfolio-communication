@@ -13,12 +13,6 @@ export default function ContactPage() {
         <ContactForm />
         <footer className="mt-16 flex gap-7 border-t border-ink-muted pt-8">
           <a
-            href={social.instagram.href}
-            className="text-[14px] font-medium text-blush no-underline hover:text-accent"
-          >
-            {social.instagram.label}
-          </a>
-          <a
             href={social.linkedin.href}
             className="text-[14px] font-medium text-blush no-underline hover:text-accent"
           >

@@ -55,7 +55,6 @@ export default function HomePage() {
               {home.cta}
             </Button>
             <div className="mt-3 flex gap-4">
-              <IconLink network="instagram" href={social.instagram.href} />
               <IconLink network="linkedin" href={social.linkedin.href} />
             </div>
           </div>

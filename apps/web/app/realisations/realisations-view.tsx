@@ -21,7 +21,8 @@ export function RealisationsView() {
     tab === "social" ? p.category === "Réseaux sociaux" : p.category === "Print",
   );
 
-  const selected = projects.find((p) => p.id === selectedId) ?? null;
+  const selectedIndex = visible.findIndex((p) => p.id === selectedId);
+  const selected = selectedIndex >= 0 ? visible[selectedIndex] : null;
   const modalProject = selected
     ? {
         title: selected.title,
@@ -32,6 +33,12 @@ export function RealisationsView() {
         pdf: selected.pdf,
       }
     : null;
+
+  const goToOffset = (offset: number) => {
+    if (visible.length === 0 || selectedIndex < 0) return;
+    const nextIndex = (selectedIndex + offset + visible.length) % visible.length;
+    setSelectedId(visible[nextIndex].id);
+  };
 
   return (
     <section id="realisations">
@@ -59,10 +66,22 @@ export function RealisationsView() {
 
       <Container width="wide" className="py-[100px]">
         <div className="mb-12 flex gap-3.5">
-          <Tab active={tab === "social"} onClick={() => setTab("social")}>
+          <Tab
+            active={tab === "social"}
+            onClick={() => {
+              setTab("social");
+              setSelectedId(null);
+            }}
+          >
             Réseaux sociaux
           </Tab>
-          <Tab active={tab === "print"} onClick={() => setTab("print")}>
+          <Tab
+            active={tab === "print"}
+            onClick={() => {
+              setTab("print");
+              setSelectedId(null);
+            }}
+          >
             Print
           </Tab>
         </div>
@@ -80,7 +99,12 @@ export function RealisationsView() {
         </div>
       </Container>
 
-      <ProjectModal project={modalProject} onClose={() => setSelectedId(null)} />
+      <ProjectModal
+        project={modalProject}
+        onClose={() => setSelectedId(null)}
+        onPrevious={visible.length > 1 ? () => goToOffset(-1) : undefined}
+        onNext={visible.length > 1 ? () => goToOffset(1) : undefined}
+      />
     </section>
   );
 }

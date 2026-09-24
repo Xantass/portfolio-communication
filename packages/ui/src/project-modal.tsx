@@ -10,6 +10,8 @@ import { Button } from "./button";
 export function ProjectModal({
   project,
   onClose,
+  onPrevious,
+  onNext,
 }: {
   project: {
     title: string;
@@ -20,12 +22,17 @@ export function ProjectModal({
     pdf?: string;
   } | null;
   onClose: () => void;
+  onPrevious?: () => void;
+  onNext?: () => void;
 }) {
   useEffect(() => {
     if (!project) return;
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.target instanceof HTMLElement && e.target.closest("video, input, textarea")) return;
+      if (e.key === "ArrowLeft") onPrevious?.();
+      if (e.key === "ArrowRight") onNext?.();
     };
 
     document.addEventListener("keydown", onKeyDown);
@@ -36,15 +43,28 @@ export function ProjectModal({
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
     };
-  }, [project, onClose]);
+  }, [project, onClose, onPrevious, onNext]);
 
   if (project === null) return null;
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex animate-fadeUp items-center justify-center bg-overlay p-[5vw]"
+      className="fixed inset-0 z-[200] flex animate-fadeUp items-center justify-center gap-3 bg-overlay p-[5vw] md:gap-5"
       onClick={onClose}
     >
+      {onPrevious ? (
+        <button
+          type="button"
+          aria-label="Réalisation précédente"
+          onClick={(e) => {
+            e.stopPropagation();
+            onPrevious();
+          }}
+          className="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-bg text-ink transition-colors hover:bg-blush"
+        >
+          <Chevron direction="left" />
+        </button>
+      ) : null}
       <div
         className="no-scrollbar grid max-h-[88vh] w-full max-w-[1100px] grid-cols-1 overflow-auto rounded bg-bg md:grid-cols-[minmax(0,1.2fr)_minmax(280px,1fr)] md:items-center"
         onClick={(e) => e.stopPropagation()}
@@ -83,6 +103,33 @@ export function ProjectModal({
           </div>
         </div>
       </div>
+      {onNext ? (
+        <button
+          type="button"
+          aria-label="Réalisation suivante"
+          onClick={(e) => {
+            e.stopPropagation();
+            onNext();
+          }}
+          className="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-bg text-ink transition-colors hover:bg-blush"
+        >
+          <Chevron direction="right" />
+        </button>
+      ) : null}
     </div>
+  );
+}
+
+function Chevron({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path
+        d={direction === "left" ? "M11 4 L6 9 L11 14" : "M7 4 L12 9 L7 14"}
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
