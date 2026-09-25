@@ -136,13 +136,6 @@ export const projects: Project[] = [
     src: "/images/projects/social/courses-pq.mp4",
   },
   {
-    id: "soc-pq",
-    category: "Réseaux sociaux",
-    title: "Reel — PQ",
-    description: "Parcours de courses en magasin, du rayon biscuits jusqu’à la carte de fin Intermarché.",
-    src: "/images/projects/social/pq.mp4",
-  },
-  {
     id: "soc-chips-coca",
     category: "Réseaux sociaux",
     title: "Reel — chips ou Coca-Cola ?",
