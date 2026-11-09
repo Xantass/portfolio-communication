@@ -1,6 +1,6 @@
+import { parseContactPayload } from "@/lib/contact";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { parseContactPayload } from "@/lib/contact";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -19,10 +19,10 @@ export async function POST(request: Request) {
   }
   const resend = new Resend(key);
   const { error } = await resend.emails.send({
-    from: "Portfolio Emma <beth.t@example.com>",
+    from: "Portfolio Alizee Marques <onboarding@resend.dev>",
     to: "marques.alizee@hotmail.fr",
     replyTo: parsed.email,
-    subject: `Portfolio — message de ${parsed.name}`,
+    subject: `Portfolio Alizee Marques — message de ${parsed.name}`,
     text: parsed.message,
   });
   if (error) {
